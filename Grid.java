@@ -3,11 +3,11 @@ public class Grid {
     private String[][] grid;
     
     public Grid(){
-        this.grid = new String[2][2];
+        this.grid = new String[3][3];
         
-        //00 01 02
-        //10 11 12
-        //20 21 22
+//        00 01 02
+//        10 11 12
+//        20 21 22
     }
     
     public String[][] getGrid() {
@@ -15,7 +15,13 @@ public class Grid {
     }
     
     public String onPosition(int x, int y) {
-        return grid[x][y];
+        if(grid[x][y] == null){
+            return " ";
+        }
+        else{
+            return grid[x][y];
+        }
+        
     }
     
     public boolean insertX(int x, int y) {
@@ -24,7 +30,7 @@ public class Grid {
             return true;
         }
         else{
-            return false;
+        return false;
         }
     }
     
