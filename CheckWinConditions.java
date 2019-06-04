@@ -9,7 +9,7 @@ public class CheckWinConditions {
     }
     
         public boolean checkWinner(){
-        if(this.grid[0][0] == "X" && this.grid[1][1] == "X" && this.grid[2][2] == "X"){
+        if(this.grid.onPosition(0,0).equals("X") && this.grid.onPosition(1,1).equals("X") && this.grid.onPosition(2,2).equals("X")){
             return true;
         }
         if(this.grid[0][2] == "X" && this.grid[1][1] == "X" && this.grid[2][0] == "X"){
@@ -63,4 +63,3 @@ public class CheckWinConditions {
         }
     }
 }
-
