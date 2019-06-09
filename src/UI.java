@@ -1,8 +1,5 @@
-import java.util.Scanner;
-
 public class UI {
-        
-        //private Grid grid = new Grid();
+
         private Reader reader = new Reader();
         private String namePlayerOne;
         private String namePlayerTwo;
@@ -25,16 +22,26 @@ public class UI {
 
             GridRenderer.drawGrid(grid);
             while (true) {
+                //playerOne's turn
                 turnX(grid);
+                //check for draw
+                if(CheckWinConditions.checkDraw(count)){
+                    System.out.println("Draw!");
+                    break;
+                //check for winner
+                }
                 if(winX(grid)){
                     break;
                 }
+                //playerTwo's turn
                 turnO(grid);
+                //check for winner.
+                //There is no check for draw since a draw always ends on X
                 if(winO(grid)){
                     break;
                 }
             }
-            continueFlow();
+            continueGame();
         }
 
         public boolean winX(Grid grid){
@@ -77,11 +84,6 @@ public class UI {
         else {
             GridRenderer.drawGrid(grid);
             count++;
-
-            if (count == 9) {
-                System.out.println("Draw!");
-                continueFlow();
-            }
         }
     }
 
@@ -99,16 +101,11 @@ public class UI {
         else {
             GridRenderer.drawGrid(grid);
             count++;
-
-            if (count == 9) {
-                System.out.println("Draw!");
-                continueFlow();
-            }
         }
     }
 
                     
-    public void continueFlow(){
+    public void continueGame(){
 
         System.out.println("Would you like to play again? Y/N");
         String option = reader.readString();
@@ -116,16 +113,14 @@ public class UI {
             if(option.toUpperCase().equals("Y")){
                 System.out.println("Starting new game: ");
                 this.count = 0;
-                Grid gridNew = new Grid();
-                start(gridNew);
+                Grid grid = new Grid();
+                start(grid);
             }
             if(option.toUpperCase().equals("N")){
-            break;
-        }
-            else{
-                System.out.println("Please enter Y or N");
+                break;
             }
-    }
+            System.out.println("Invalid input");
+        }
         System.out.println("Thank you for playing!");
         System.out.println("Final score:");
         System.out.println(namePlayerOne +": " +scorePlayerOne+ " points." );

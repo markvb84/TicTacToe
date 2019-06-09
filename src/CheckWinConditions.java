@@ -56,7 +56,15 @@ public class CheckWinConditions {
         //no winner yet
         else{
             return false;
+            }
         }
-        
+
+    public static boolean checkDraw(int turnCounter){
+       if(turnCounter == 9){
+           return true;
+       }
+       else{
+           return false;
+       }
     }
 }
