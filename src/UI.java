@@ -13,7 +13,7 @@ public class UI {
             this.namePlayerOne = reader.readString();
             System.out.println("Player 2 (O), please enter your name:");
             this.namePlayerTwo = reader.readString();
-            
+            System.out.println("To place your mark: enter a column letter, followed by a row number.");
             this.scorePlayerOne = 0;
             this.scorePlayerTwo = 0;
         }
