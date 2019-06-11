@@ -115,16 +115,22 @@ public class UI {
                 this.count = 0;
                 Grid grid = new Grid();
                 start(grid);
-            }
-            if(option.toUpperCase().equals("N")){
                 break;
             }
-            System.out.println("Invalid input");
+            else {
+                if (option.toUpperCase().equals("N")) {
+                    System.out.println("Thank you for playing!");
+                    System.out.println("Final score:");
+                    System.out.println(namePlayerOne +": " +scorePlayerOne+ " points." );
+                    System.out.println(namePlayerTwo +": " +scorePlayerTwo+ " points." );
+                    break;
+                }
+                else {
+                    System.out.println("Invalid input, please type Y or N");
+                    option = reader.readString();
+                }
+            }
         }
-        System.out.println("Thank you for playing!");
-        System.out.println("Final score:");
-        System.out.println(namePlayerOne +": " +scorePlayerOne+ " points." );
-        System.out.println(namePlayerTwo +": " +scorePlayerTwo+ " points." );
     }
 }
 

@@ -11,7 +11,13 @@ public class Reader {
     
     public int readInteger(){
         String readInteger = sc.nextLine();
-        int readInt = Integer.parseInt(readInteger);	
+        try {
+            int readInt = Integer.parseInt(readInteger);
+        }
+        catch (NumberFormatException e) {
+            return -1;
+        }
+        int readInt = Integer.parseInt(readInteger);
         return readInt;
     }
 }

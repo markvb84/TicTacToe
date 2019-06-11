@@ -27,7 +27,7 @@ public class Coordinates {
         return axisX;
     }
 }
-//A  B  C
+//         A  B  C
 //      1 00 01 02
 //      2 10 11 12
 //      3 20 21 22
