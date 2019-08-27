@@ -2,22 +2,21 @@ import java.util.Scanner;
 
 public class Reader {
     
-    private Scanner sc = new Scanner(System.in);
+    private static Scanner sc = new Scanner(System.in);
     
-    public String readString(){
+    public static String readString(){
         String readString = sc.nextLine();
         return readString;
     }
     
-    public int readInteger(){
+    public static int readInteger(){
         String readInteger = sc.nextLine();
         try {
             int readInt = Integer.parseInt(readInteger);
+            return readInt;
         }
         catch (NumberFormatException e) {
             return -1;
         }
-        int readInt = Integer.parseInt(readInteger);
-        return readInt;
     }
 }
