@@ -132,9 +132,8 @@ public class UI {
                 else {
                     System.out.println("Invalid input, please type Y or N");
                     option = reader.readString();
-                } 
+                }
             }
         }
     }
 }
-
