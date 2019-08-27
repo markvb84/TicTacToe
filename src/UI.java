@@ -28,17 +28,21 @@ public class UI {
                 if(CheckWinConditions.checkDraw(count)){
                     System.out.println("Draw!");
                     break;
-                //check for winner
                 }
-                if(winX(grid)){
-                    break;
+                //check for winner
+                if(count >= 5) {
+                    if (winX(grid)) {
+                        break;
+                    }
                 }
                 //playerTwo's turn
                 turnO(grid);
                 //check for winner.
                 //There is no check for draw since a draw always ends on X
-                if(winO(grid)){
-                    break;
+                if(count >= 5) {
+                    if (winO(grid)) {
+                        break;
+                    }
                 }
             }
             continueGame();
