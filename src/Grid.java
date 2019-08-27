@@ -16,7 +16,7 @@ public class Grid {
         } else {
             return grid[y][x];
         }
-    }
+    } 
 
     public boolean insertX(int y, int x) {
         try {
