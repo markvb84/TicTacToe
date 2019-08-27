@@ -5,4 +5,4 @@ public class NewGame {
         UI newgame = new UI();
         newgame.start(grid);
     }
-}
+} 
