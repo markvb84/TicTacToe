@@ -1,63 +1,48 @@
 public class CheckWinConditions {
 
-    public static boolean checkWinner(Grid grid){
-        //check X win conditions
-        if(grid.onPosition(0,0).equals("X") && grid.onPosition(1,1).equals("X") && grid.onPosition(2,2).equals("X")){
-            return true;
+    public static boolean checkWinner(Grid grid, Player player) {
+
+        boolean winnerAvailable = false;
+
+        if (grid.onPosition(0, 0).equals(player.getPlayerIcon()) && grid.onPosition(1, 1).equals(player.getPlayerIcon()) && grid.onPosition(2, 2).equals(player.getPlayerIcon())) {
+            winnerAvailable = true;
         }
-        if(grid.onPosition(0,2).equals("X") && grid.onPosition(1,1).equals("X") && grid.onPosition(2,0).equals("X")){
-            return true;
+        if (grid.onPosition(0, 2).equals(player.getPlayerIcon()) && grid.onPosition(1, 1).equals(player.getPlayerIcon()) && grid.onPosition(2, 0).equals(player.getPlayerIcon())) {
+            winnerAvailable = true;
         }
-        if(grid.onPosition(0,0).equals("X") && grid.onPosition(0,1).equals("X") && grid.onPosition(0,2).equals("X")){
-            return true;
+        if (grid.onPosition(0, 0).equals(player.getPlayerIcon()) && grid.onPosition(0, 1).equals(player.getPlayerIcon()) && grid.onPosition(0, 2).equals(player.getPlayerIcon())) {
+            winnerAvailable = true;
         }
-        if(grid.onPosition(1,0).equals("X") && grid.onPosition(1,1).equals("X") && grid.onPosition(1,2).equals("X")){
-            return true;
+        if (grid.onPosition(1, 0).equals(player.getPlayerIcon()) && grid.onPosition(1, 1).equals(player.getPlayerIcon()) && grid.onPosition(1, 2).equals(player.getPlayerIcon())) {
+            winnerAvailable = true;
         }
-        if(grid.onPosition(2,0).equals("X") && grid.onPosition(2,1).equals("X") && grid.onPosition(2,2).equals("X")){
-            return true;
+        if (grid.onPosition(2, 0).equals(player.getPlayerIcon()) && grid.onPosition(2, 1).equals(player.getPlayerIcon()) && grid.onPosition(2, 2).equals(player.getPlayerIcon())) {
+            winnerAvailable = true;
         }
-        if(grid.onPosition(0,0).equals("X") && grid.onPosition(1,0).equals("X") && grid.onPosition(2,0).equals("X")){
-            return true;
+        if (grid.onPosition(0, 0).equals(player.getPlayerIcon()) && grid.onPosition(1, 0).equals(player.getPlayerIcon()) && grid.onPosition(2, 0).equals(player.getPlayerIcon())) {
+            winnerAvailable = true;
         }
-        if(grid.onPosition(0,1).equals("X") && grid.onPosition(1,1).equals("X") && grid.onPosition(2,1).equals("X")){
-            return true;
+        if (grid.onPosition(0, 1).equals(player.getPlayerIcon()) && grid.onPosition(1, 1).equals(player.getPlayerIcon()) && grid.onPosition(2, 1).equals(player.getPlayerIcon())) {
+            winnerAvailable = true;
         }
-        if(grid.onPosition(0,2).equals("X") && grid.onPosition(1,2).equals("X") && grid.onPosition(2,2).equals("X")){
-            return true;
+        if (grid.onPosition(0, 2).equals(player.getPlayerIcon()) && grid.onPosition(1, 2).equals(player.getPlayerIcon()) && grid.onPosition(2, 2).equals(player.getPlayerIcon())) {
+            winnerAvailable = true;
         }
-        
-        //check O win conditions
-        if(grid.onPosition(0,0).equals("O") && grid.onPosition(1,1).equals("O") && grid.onPosition(2,2).equals("O")){
+
+        if (winnerAvailable == true) {
+            announceWinner(player);
             return true;
-        }
-        if(grid.onPosition(0,2).equals("O") && grid.onPosition(1,1).equals("O") && grid.onPosition(2,0).equals("O")){
-            return true;
-        }
-        if(grid.onPosition(0,0).equals("O") && grid.onPosition(0,1).equals("O") && grid.onPosition(0,2).equals("O")){
-            return true;
-        }
-        if(grid.onPosition(1,0).equals("O") && grid.onPosition(1,1).equals("O") && grid.onPosition(1,2).equals("O")){
-            return true;
-        }
-        if(grid.onPosition(2,0).equals("O") && grid.onPosition(2,1).equals("O") && grid.onPosition(2,2).equals("O")){
-            return true;
-        }
-        if(grid.onPosition(0,0).equals("O") && grid.onPosition(1,0).equals("O") && grid.onPosition(2,0).equals("O")){
-            return true;
-        }
-        if(grid.onPosition(0,1).equals("O") && grid.onPosition(1,1).equals("O") && grid.onPosition(2,1).equals("O")){
-            return true;
-        }
-        if(grid.onPosition(0,2).equals("O") && grid.onPosition(1,2).equals("O") && grid.onPosition(2,2).equals("O")){
-            return true;
-        }
-        
-        //no winner yet
-        else{
+        } else {
             return false;
-            }
         }
+    }
+
+    
+    public static void announceWinner(Player player){
+            System.out.println(player.getName() + " wins!");
+            player.increaseScore();
+        }
+
 
     public static boolean checkDraw(int turnCounter){
        if(turnCounter == 9){
@@ -67,4 +52,4 @@ public class CheckWinConditions {
            return false;
        }
     }
-} 
+}
