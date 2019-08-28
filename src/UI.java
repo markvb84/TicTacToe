@@ -63,36 +63,36 @@ public class UI {
         }
     }
 
-    public void scoreBoard(){
-        System.out.println(playerOne.getName() + ": " + playerOne.getScore() + " points.");
-        System.out.println(playerTwo.getName() + ": " + playerTwo.getScore()+ " points.");
-    }
+        public void scoreBoard(){
+            System.out.println(playerOne.getName() + ": " + playerOne.getScore() + " points.");
+            System.out.println(playerTwo.getName() + ": " + playerTwo.getScore()+ " points.");
+        }
                     
-    public void continueGame(){
-
-        System.out.println("Would you like to play again? Y/N");
-        String option = reader.readString();
-        while(true){
-            if(option.toUpperCase().equals("Y")){
-                System.out.println("Starting new game: ");
-                this.count = 0;
-                Grid grid = new Grid();
-                start(grid);
-                break;
-            }
-            else {
-                if (option.toUpperCase().equals("N")) {
-                    System.out.println("Thank you for playing!");
-                    System.out.println("Final score:");
-                    System.out.println(playerOne.getName() +": " +playerOne.getScore()+ " points." );
-                    System.out.println(playerTwo.getName() +": " +playerTwo.getScore()+ " points." );
+        public void continueGame(){
+    
+            System.out.println("Would you like to play again? Y/N");
+            String option = reader.readString();
+            while(true){
+                if(option.toUpperCase().equals("Y")){
+                    System.out.println("Starting new game: ");
+                    this.count = 0;
+                    Grid grid = new Grid();
+                    start(grid);
                     break;
                 }
                 else {
-                    System.out.println("Invalid input, please type Y or N");
-                    option = reader.readString();
+                    if (option.toUpperCase().equals("N")) {
+                        System.out.println("Thank you for playing!");
+                        System.out.println("Final score:");
+                        System.out.println(playerOne.getName() +": " +playerOne.getScore()+ " points." );
+                        System.out.println(playerTwo.getName() +": " +playerTwo.getScore()+ " points." );
+                        break;
+                    }
+                    else {
+                        System.out.println("Invalid input, please type Y or N");
+                        option = reader.readString();
+                    }
                 }
             }
         }
     }
-}
