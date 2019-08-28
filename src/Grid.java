@@ -16,26 +16,12 @@ public class Grid {
         } else {
             return grid[y][x];
         }
-    } 
-
-    public boolean insertX(int y, int x) {
-        try {
-            if (this.grid[y][x] == null) {
-                this.grid[y][x] = "X";
-                return true;
-            } else {
-                return false;
-            }
-        } catch (ArrayIndexOutOfBoundsException e) {
-            return false;
-        }
     }
 
-
-    public boolean insertO ( int y, int x){
+    public boolean insertIcon(int y, int x, Player player) {
         try {
             if (this.grid[y][x] == null) {
-                this.grid[y][x] = "O";
+                this.grid[y][x] = player.getPlayerIcon();
                 return true;
             } else {
                 return false;
