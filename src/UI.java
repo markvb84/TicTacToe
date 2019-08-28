@@ -60,8 +60,8 @@ public class UI {
         else {
             GridRenderer.drawGrid(grid);
             count++;
+            }
         }
-    }
 
         public void scoreBoard(){
             System.out.println(playerOne.getName() + ": " + playerOne.getScore() + " points.");
