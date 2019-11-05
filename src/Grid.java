@@ -1,9 +1,13 @@
 public class Grid {
 
+    private int columns;
+    private int rows;
     private String[][] grid;
 
-    public Grid() {
-        this.grid = new String[3][3];
+    public Grid(int columns, int rows) {
+        this.grid = new String[columns][rows];
+        this.columns = columns;
+        this.rows = rows;
 
 //        00 01 02
 //        10 11 12
@@ -29,5 +33,13 @@ public class Grid {
         } catch (ArrayIndexOutOfBoundsException e) {
             return false;
         }
+    }
+
+    public int getColumns(){
+        return this.columns;
+    }
+
+    public int getRows(){
+        return this.rows;
     }
 }

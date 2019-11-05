@@ -4,6 +4,8 @@ public class UI {
         private int count = 0;
         private Player playerOne;
         private Player playerTwo;
+        private int columns;
+        private int rows;
         
         public UI(){
             System.out.println("Welcome to Tic Tac Toe!");
@@ -15,33 +17,31 @@ public class UI {
         }
         
         public void start(Grid grid) {
-
+            this.columns = grid.getColumns();
+            this.rows = grid.getRows();
             GridRenderer.drawGrid(grid);
             while (true) {
                 //playerOne's turn
                 turnPlayer(grid, playerOne);
                 //check for draw
-                if(CheckWinConditions.checkDraw(count)){
+                if(CheckWinConditions.checkDraw(count, grid)){
                     System.out.println("Draw!");
                     break;
                 }
                 //check for winner
-                if(count >= 5) {
-                    if (CheckWinConditions.checkWinner(grid, playerOne)) {
-                        scoreBoard();
-                        break;
-                    }
+                if (CheckWinConditions.checkWinner(grid, playerOne)) {
+                    scoreBoard();
+                    break;
                 }
                 //playerTwo's turn
                 turnPlayer(grid, playerTwo);
                 //check for winner.
                 //There is no check for draw since a draw always ends on X
-                if(count >= 5) {
-                    if (CheckWinConditions.checkWinner(grid, playerTwo)) {
-                        scoreBoard();
-                        break;
-                    }
+                if (CheckWinConditions.checkWinner(grid, playerTwo)) {
+                    scoreBoard();
+                    break;
                 }
+
             }
             continueGame();
         }
@@ -76,7 +76,7 @@ public class UI {
                 if(option.toUpperCase().equals("Y")){
                     System.out.println("Starting new game: ");
                     this.count = 0;
-                    Grid grid = new Grid();
+                    Grid grid = new Grid(this.columns, this.rows);
                     start(grid);
                     break;
                 }

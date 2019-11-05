@@ -5,11 +5,31 @@ public class GridRenderer {
 //        20 21 22
 
     public static void drawGrid(Grid grid){
-        System.out.println("  A   B   C");
-        System.out.println("1 " +grid.onPosition(0, 0)+ " | " +grid.onPosition(0, 1)+ " | " +grid.onPosition(0, 2) +" ");
-        System.out.println(" ----------");
-        System.out.println("2 " +grid.onPosition(1, 0)+ " | " +grid.onPosition(1, 1)+ " | " +grid.onPosition(1, 2) +" ");
-        System.out.println(" ----------");
-        System.out.println("3 " +grid.onPosition(2, 0)+ " | " +grid.onPosition(2, 1)+ " | " +grid.onPosition(2, 2) +" ");
+        //Generate column letters
+        char colLetter = 'A';
+        for (int i = 0; i < grid.getColumns(); i++){
+            System.out.print("  " +colLetter+ " ");
+            colLetter++;
+            if (i + 1 == grid.getColumns()) {
+                System.out.println(" ");
+            }
+        }
+        //Generate rows
+        for (int i = 0; i < grid.getRows(); i++){
+            System.out.print(i+1 +" ");
+            for(int j = 0; j < grid.getColumns(); j++){
+                System.out.print(grid.onPosition(i, j));
+                if (j != grid.getColumns()-1) {
+                    System.out.print(" | ");
+                }
+            }
+            System.out.print("\n");
+            if(i != grid.getRows()-1) {
+                for (int k = 0; k < grid.getColumns(); k++) {
+                    System.out.print(" ---");
+                }
+            }
+            System.out.println(" ");
+        }
     }
 }
