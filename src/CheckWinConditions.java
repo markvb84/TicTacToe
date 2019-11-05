@@ -10,7 +10,11 @@ public class CheckWinConditions {
             announceWinner(player);
             return true;
         }
-        else if (checkDiagonal(grid, player)){
+        else if (checkDiagonalLeftToRight(grid, player)){
+            announceWinner(player);
+            return true;
+        }
+        else if (checkDiagonalRightToLeft(grid, player)){
             announceWinner(player);
             return true;
         }
@@ -49,8 +53,7 @@ public class CheckWinConditions {
         return false;
     }
 
-        //nu nog rechts naar links
-    public static boolean checkDiagonal(Grid grid, Player player) {
+    public static boolean checkDiagonalLeftToRight(Grid grid, Player player) {
         int count = 0;
         for (int i = 0, j = 0; i < grid.getRows(); i++, j++) {
             if (grid.onPosition(i, j).equals(player.getPlayerIcon())) {
@@ -62,7 +65,20 @@ public class CheckWinConditions {
         }
         return false;
     }
-    
+
+    public static boolean checkDiagonalRightToLeft(Grid grid, Player player) {
+        int count = 0;
+        for (int i = 0, j = grid.getColumns()-1; i < grid.getRows(); i++, j--) {
+            if (grid.onPosition(i, j).equals(player.getPlayerIcon())) {
+                count++;
+            }
+            if (count == grid.getRows()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public static void announceWinner(Player player){
             System.out.println(player.getName() + " wins!");
             player.increaseScore();

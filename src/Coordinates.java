@@ -1,8 +1,8 @@
 
 public class Coordinates {
 
-    public static int coordinateY(int y){
-        if(y >-1 && y <4){
+    public static int coordinateY(int y, Grid grid){
+        if(y >-1 && y <grid.getRows()+1){
             int axisY = y-1;
             return axisY;
         }
@@ -11,18 +11,16 @@ public class Coordinates {
         }
     }
 
-    public static int coordinateX(String x){
+    public static int coordinateX(String x, Grid grid){
 
         int axisX = -1;
+        char characterCoordinate = 'a';
 
-        if(x.equalsIgnoreCase("A")){
-            axisX = 0;
-        }
-        if(x.equalsIgnoreCase("B")){
-            axisX = 1;
-        }
-        if(x.equalsIgnoreCase("C")){
-            axisX = 2;
+        for(int i = 0; i < grid.getColumns()+1; i++) {
+            if(x.equalsIgnoreCase(Character.toString(characterCoordinate))){
+                axisX = i;
+            }
+            characterCoordinate++;
         }
         return axisX;
     }

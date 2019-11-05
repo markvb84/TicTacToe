@@ -51,8 +51,8 @@ public class UI {
         int coordinateTwo;
 
         System.out.println(player.getName() +": where goes the "+player.getPlayerIcon()+"? Enter coordinates:");
-        coordinateOne = Coordinates.coordinateX(reader.readString());
-        coordinateTwo = Coordinates.coordinateY(reader.readInteger());
+        coordinateOne = Coordinates.coordinateX(reader.readString(), grid);
+        coordinateTwo = Coordinates.coordinateY(reader.readInteger(), grid);
         if(!grid.insertIcon(coordinateOne, coordinateTwo, player)){
             System.out.println("Invalid position, try again.");
             turnPlayer(grid, player);
