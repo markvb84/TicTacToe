@@ -22,6 +22,7 @@ public class UI {
             while (true) {
                 //playerOne's turn
                 playerOne.turnPlayer(grid, playerOne);
+                count++;
                 //check for draw
                 if(CheckWinConditions.checkDraw(count, grid)){
                     System.out.println("Draw!");
@@ -34,6 +35,7 @@ public class UI {
                 }
                 //playerTwo's turn
                 playerTwo.turnPlayer(grid, playerTwo);
+                count++;
                 //check for draw
                 if(CheckWinConditions.checkDraw(count, grid)){
                     System.out.println("Draw!");
