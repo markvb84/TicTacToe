@@ -35,8 +35,12 @@ public class UI {
                 }
                 //playerTwo's turn
                 turnPlayer(grid, playerTwo);
+                //check for draw
+                if(CheckWinConditions.checkDraw(count, grid)){
+                    System.out.println("Draw!");
+                    break;
+                }
                 //check for winner.
-                //There is no check for draw since a draw always ends on X
                 if (CheckWinConditions.checkWinner(grid, playerTwo)) {
                     scoreBoard();
                     break;
