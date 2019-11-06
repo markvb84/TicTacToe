@@ -1,12 +1,14 @@
-public class Player {
+abstract class Player {
     private String playerName;
     private String playerIcon;
     private int playerScore;
 
-    public Player(String name, String icon){
+    Player(String name, String icon){
         this.playerName = name;
         this.playerIcon = icon;
     }
+
+    abstract void turnPlayer(Grid grid, Player player);
 
     public String getName(){
         return this.playerName;
