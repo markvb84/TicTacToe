@@ -1,4 +1,4 @@
-public class UI {
+    class UI {
 
         private int count = 0;
         private HumanPlayer playerOne;
@@ -16,38 +16,32 @@ public class UI {
         }
         
         void start(Grid grid) {
-            this.columns = grid.getColumns();
-            this.rows = grid.getRows();
             GridRenderer.drawGrid(grid);
             while (true) {
-                //playerOne's turn
-                playerOne.turnPlayer(grid, playerOne);
-                count++;
-                //check for draw
-                if(CheckWinConditions.checkDraw(count, grid)){
-                    System.out.println("Draw!");
+                if(makeTurn(grid, playerOne)){
                     break;
                 }
-                //check for winner
-                if (CheckWinConditions.checkWinner(grid, playerOne)) {
-                    scoreBoard();
-                    break;
-                }
-                //playerTwo's turn
-                playerTwo.turnPlayer(grid, playerTwo);
-                count++;
-                //check for draw
-                if(CheckWinConditions.checkDraw(count, grid)){
-                    System.out.println("Draw!");
-                    break;
-                }
-                //check for winner.
-                if (CheckWinConditions.checkWinner(grid, playerTwo)) {
-                    scoreBoard();
+                if(makeTurn(grid, playerTwo)){
                     break;
                 }
             }
             continueGame();
+        }
+
+        private boolean makeTurn(Grid grid, Player player) {
+            player.turnPlayer(grid, playerOne);
+            count++;
+            //check for draw
+            if(CheckWinConditions.checkDraw(count, grid)){
+                System.out.println("Draw!");
+                return true;
+            }
+            //check for winner
+            if (CheckWinConditions.checkWinner(grid, player)) {
+                scoreBoard();
+                return true;
+            }
+            return false;
         }
 
         private void scoreBoard(){
