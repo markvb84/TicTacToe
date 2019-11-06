@@ -40,7 +40,7 @@ public class UI {
                     System.out.println("Draw!");
                     break;
                 }
-                //check for winner.
+                //check for winner
                 if (CheckWinConditions.checkWinner(grid, playerTwo)) {
                     scoreBoard();
                     break;
