@@ -1,10 +1,10 @@
-public class Grid {
+class Grid {
 
     private int columns;
     private int rows;
     private String[][] grid;
 
-    public Grid(int columns, int rows) {
+    Grid(int columns, int rows) {
         this.grid = new String[columns][rows];
         this.columns = columns;
         this.rows = rows;
@@ -14,7 +14,7 @@ public class Grid {
 //        20 21 22
     }
 
-    public String onPosition(int x, int y) {
+    String onPosition(int x, int y) {
         if (grid[y][x] == null) {
             return " ";
         } else {
@@ -22,7 +22,7 @@ public class Grid {
         }
     }
 
-    public boolean insertIcon(int y, int x, Player player) {
+    boolean insertIcon(int y, int x, Player player) {
         try {
             if (this.grid[y][x] == null) {
                 this.grid[y][x] = player.getPlayerIcon();
@@ -35,11 +35,11 @@ public class Grid {
         }
     }
 
-    public int getColumns(){
+    int getColumns(){
         return this.columns;
     }
 
-    public int getRows(){
+    int getRows(){
         return this.rows;
     }
 }
