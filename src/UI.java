@@ -1,28 +1,27 @@
 public class UI {
 
-        private Reader reader = new Reader();
         private int count = 0;
-        private Player playerOne;
-        private Player playerTwo;
+        private HumanPlayer playerOne;
+        private HumanPlayer playerTwo;
         private int columns;
         private int rows;
         
-        public UI(){
+        UI(){
             System.out.println("Welcome to Tic Tac Toe!");
             System.out.println("Player 1 (X), please enter your name:");
-            playerOne = new Player(reader.readString(), "X");
+            playerOne = new HumanPlayer(Reader.readString(), "X");
             System.out.println("Player 2 (O), please enter your name:");
-            playerTwo = new Player(reader.readString(), "O");
+            playerTwo = new HumanPlayer(Reader.readString(), "O");
             System.out.println("To place your mark: enter a column letter, followed by a row number.");
         }
         
-        public void start(Grid grid) {
+        void start(Grid grid) {
             this.columns = grid.getColumns();
             this.rows = grid.getRows();
             GridRenderer.drawGrid(grid);
             while (true) {
                 //playerOne's turn
-                turnPlayer(grid, playerOne);
+                playerOne.turnPlayer(grid, playerOne);
                 //check for draw
                 if(CheckWinConditions.checkDraw(count, grid)){
                     System.out.println("Draw!");
@@ -34,48 +33,30 @@ public class UI {
                     break;
                 }
                 //playerTwo's turn
-                turnPlayer(grid, playerTwo);
+                playerTwo.turnPlayer(grid, playerTwo);
                 //check for draw
                 if(CheckWinConditions.checkDraw(count, grid)){
                     System.out.println("Draw!");
                     break;
                 }
-                //check for winner
+                //check for winner.
                 if (CheckWinConditions.checkWinner(grid, playerTwo)) {
                     scoreBoard();
                     break;
                 }
-
             }
             continueGame();
         }
 
-        public void turnPlayer(Grid grid, Player player){
-        int coordinateOne;
-        int coordinateTwo;
-
-        System.out.println(player.getName() +": where goes the "+player.getPlayerIcon()+"? Enter coordinates:");
-        coordinateOne = Coordinates.coordinateX(reader.readString(), grid);
-        coordinateTwo = Coordinates.coordinateY(reader.readInteger(), grid);
-        if(!grid.insertIcon(coordinateOne, coordinateTwo, player)){
-            System.out.println("Invalid position, try again.");
-            turnPlayer(grid, player);
-        }
-        else {
-            GridRenderer.drawGrid(grid);
-            count++;
-            }
-        }
-
-        public void scoreBoard(){
+        private void scoreBoard(){
             System.out.println(playerOne.getName() + ": " + playerOne.getScore() + " points.");
             System.out.println(playerTwo.getName() + ": " + playerTwo.getScore()+ " points.");
         }
                     
-        public void continueGame(){
+        private void continueGame(){
     
             System.out.println("Would you like to play again? Y/N");
-            String option = reader.readString();
+            String option = Reader.readString();
             while(true){
                 if(option.toUpperCase().equals("Y")){
                     System.out.println("Starting new game: ");
@@ -94,7 +75,7 @@ public class UI {
                     }
                     else {
                         System.out.println("Invalid input, please type Y or N");
-                        option = reader.readString();
+                        option = Reader.readString();
                     }
                 }
             }
